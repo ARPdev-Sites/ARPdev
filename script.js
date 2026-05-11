@@ -34,3 +34,68 @@ setTimeout(() => {
   const floatEl = document.getElementById('insta-float');
   if (floatEl) floatEl.classList.add('show');
 }, 1500);
+
+/* ===== MOBILE MENU ===== */
+
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenu = document.getElementById('closeMenu');
+
+menuToggle.addEventListener('click', () => {
+
+  mobileMenu.classList.add('active');
+
+});
+
+closeMenu.addEventListener('click', () => {
+
+  mobileMenu.classList.remove('active');
+
+});
+
+/* CLOSE MENU WHEN CLICKING LINK */
+
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+
+  link.addEventListener('click', () => {
+
+    mobileMenu.classList.remove('active');
+
+  });
+
+});
+
+/* ===== NAVBAR SHOW/HIDE ===== */
+
+const navbar = document.getElementById('navbar');
+
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll <= 0) {
+
+    navbar.classList.remove('hide');
+
+    return;
+
+  }
+
+  if (
+    currentScroll > lastScroll &&
+    currentScroll > 120
+  ) {
+
+    navbar.classList.add('hide');
+
+  } else {
+
+    navbar.classList.remove('hide');
+
+  }
+
+  lastScroll = currentScroll;
+
+});
